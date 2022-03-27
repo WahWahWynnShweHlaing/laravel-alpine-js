@@ -23,4 +23,4 @@ Route::get('getAll', [BookController::class, 'index']);
 Route::post('add', [BookController::class, 'add']);
 Route::get('edit/{id}', [BookController::class, 'edit']);
 Route::put('update/{id}', [BookController::class, 'update']);
-Route::delete('delete/{id}', [BookController::class, 'delete']);
+Route::delete('delete/{id}', [BookController::class, 'delete'])->name('delete');

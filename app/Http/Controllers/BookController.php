@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Http\Requests\StoreRequest;
+use App\Http\Requests\UpdateRequest;
 
 class BookController extends Controller
 {
@@ -15,7 +17,7 @@ class BookController extends Controller
     }
 
     // add book
-    public function add(Request $request)
+    public function add(StoreRequest $request)
     {
         $book = new Book([
             'name' => $request->input('name'),
@@ -34,7 +36,7 @@ class BookController extends Controller
     }
 
     // update book
-    public function update($id, Request $request)
+    public function update($id, UpdateRequest $request)
     {
         $book = Book::findOrfail($id);
         $book->name = $request->name;
