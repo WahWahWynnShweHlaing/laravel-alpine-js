@@ -55,7 +55,6 @@ document.addEventListener('alpine:init', () => {
                 })
             },
             deleteData(id) {
-                alert(id);
                 axios.delete(`/api/delete/${id}`)
                 .then(response => {
                     this.books();
