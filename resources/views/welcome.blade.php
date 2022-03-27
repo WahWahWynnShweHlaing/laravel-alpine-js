@@ -31,16 +31,16 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <template x-for="(book,index) in books" :key="index">
+                            <tbody x-init="books()">
+                                <template x-for="data in form" :key="data.id">
                                     <tr>
-                                        <td x-text="index+1"></td>
-                                        <td x-text="book.name"></td>
-                                        <td x-text="book.author"></td>
+                                        <td x-text="data.id"></td>
+                                        <td x-text="data.name"></td>
+                                        <td x-text="data.author"></td>
                                         <td>
-                                            <button @click.prevent="editData(book,index)"
+                                            <button @click.prevent="editData(data)"
                                                 class="btn btn-info">Edit</button>
-                                            <button @click.prevent="deleteData(index)"
+                                            <button @click.prevent="deleteData(data.id)"
                                                 class="btn btn-danger">Delete</button>
                                         </td>
                                     </tr>
@@ -70,7 +70,7 @@
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </div>
                         </form>
-                        <form @submit.prevent="updateData" x-show="!addMode">
+                        <form @submit.prevent="updateData" x-show="!addMode" name="edit">
                             <div class="form-group">
                                 <label>Name</label>
                                 <input x-model="form.name" type="text" class="form-control" placeholder="Enter Name">
